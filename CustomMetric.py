@@ -29,6 +29,6 @@ if __name__ == '__main__':
     print(memProcessChromeDrive())
     instance_id = requests.get(_METADATAURL + '/instance-id').text
     instance_type = requests.get(_METADATAURL + '/instance-type').text
-    dimensions = [{'Name': 'InstanceId', 'Value': instance_id}, {'Name': 'InstanceType', 'Value': instance_type}]
+    dimensions = [{'Name': 'InstanceId', 'Value': instance_id}]
     appendMetrics(currMetrics, dimensions, Name='ProcessChromedriver', Value=memProcessChromeDrive(), Unit='Count')
     response = cw.put_metric_data(MetricData=currMetrics, Namespace='CustomMetricChromeDrive')
